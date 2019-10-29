@@ -1,17 +1,17 @@
 <?php 
-
-//criando a conexao com o banco de dados 
+//criando conexao com o banco mercadinhoze
 
 $servidor = '127.0.0.1:3306';
-$usuario ='root';
-$senha ='';
-$banco ='mercadinhoze';
+$usuario = 'root';
+$senha = '';
+$banco = 'mercadinhoze';
 
-$link = mysqli_connect($servidor,$usuario,$senha,$banco);
+$link = mysqli_connect($servidor, $usuario, $senha, $banco);
 
-if($link){
-    echo"erro ao conectar"; exit();
+if(!$link){
+    echo "erro ao conectar"; exit();
 }
 
-echo "conctado com sucesso";
+echo "conectado";
+
 ?>
