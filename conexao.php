@@ -12,6 +12,5 @@ if(!$link){
     echo "erro ao conectar"; exit();
 }
 
-echo "conectado";
 
 ?>
