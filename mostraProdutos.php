@@ -26,6 +26,7 @@ echo "</tr>";
 
 echo "</table>";
 
+// botao para inserir produto
 echo "<button><a href='index.html' style='text-decoration:none'>Inserir</a></button>";
 
 ?>

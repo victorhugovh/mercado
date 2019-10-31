@@ -1,6 +1,8 @@
 <?php 
 
+
 include 'conexao.php';
+
 
 $nome = $_POST['nome'];
 $validade = $_POST['validade'];
@@ -12,6 +14,9 @@ $preco_uni = $_POST['preco_uni'];
 
 mysqli_query($link,"insert into TB_Produto (nome, validade, data_rec, qtd_estoque, qtd_min_estoque, preco_uni) values ('$nome','$validade','$data_rec','$qtd_estoque','$qtd_min_estoque','$preco_uni')");  
 // echo "inserido com sucesso";
+
+
+//Indo para a pagina que mostra os produtos 
 
 header("Location: ./mostraProdutos.php");
 
