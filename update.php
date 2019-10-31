@@ -16,6 +16,7 @@ $preco_uni = $_POST["preco_uni"];
 
 mysqli_query($link, "update TB_Produto set nome='$nome', validade='$validade', data_rec='$data_rec', qtd_estoque='$qtd_estoque', qtd_min_estoque='$qtd_min_estoque', preco_uni='$preco_uni' where id_Produto=$idupadate");
 echo "Alterado com sucesso";
-
+echo"<br/>";
+echo "<button><a href='mostraProdutos.php' style='text-decoration:none'>Voltar</a></button>";
 
 ?>
