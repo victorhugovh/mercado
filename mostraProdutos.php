@@ -19,13 +19,14 @@ echo "<td>" . $linha['data_rec'] ." &nbsp;". " - </td>";
 echo "<td>" . $linha['qtd_estoque'] ." &nbsp;". " - </td>";
 echo "<td>" . $linha['qtd_min_estoque'] ." &nbsp;"." - </td>";
 echo "<td>" . $linha['preco_uni'] ." &nbsp;"." </td>";
-echo "<td><a href='deletar.php?id=$pegaid'>Excluir<a/><td>";
-echo "<td><a href='alterar.php?id=$pegaid'>Alterar<a/><td>";
+echo "<td><a href='deletar.php?id=$pegaid'>Excluir</a><td>";
+echo "<td><a href='alterar.php?id=$pegaid'>Alterar</a><td>";
 echo "</tr>";
-}
+};
 
 echo "</table>";
 
-
+echo "<button><a href='index.html' style='text-decoration:none'>Inserir</a></button>";
 
 ?>
+

@@ -15,6 +15,6 @@ mysqli_query($link,"insert into TB_Produto (nome, validade, data_rec, qtd_estoqu
 
 header("Location: ./mostraProdutos.php");
 
-
-
 ?>
+
+
