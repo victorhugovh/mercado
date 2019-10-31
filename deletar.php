@@ -1,7 +1,11 @@
 <?php 
+// criando o comando para deletar o produto
+
+// cenexao do banco 
 
 include 'conexao.php';
 
+// pegando o ID do produto que sera deletado 
 
 $idDeletar = $_GET['id'];
 

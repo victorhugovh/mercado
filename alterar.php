@@ -1,12 +1,18 @@
 <?php 
+//criando pagina para alterar o produto 
+
+//chamndo a conexao do banco 
 
 include 'conexao.php';
+
 
 $idAlterar = $_GET['id'];
 
 $sql = mysqli_query($link,"select * from TB_Produto where id_Produto = $idAlterar"); 
 
 $linha = mysqli_fetch_array($sql);
+
+//pegando as informaçoes do produto ja inserido
 
 echo "<div>";
 echo "<form action='update.php?id=$linha[0]' method='post'>"; 
