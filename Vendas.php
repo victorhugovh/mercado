@@ -10,7 +10,7 @@
 
 <!-- formulario de prencimento -->
 
-     <form action="indexVendas.php" method="POST">
+     <form action="Vendas.php" method="POST">
         
     <label class="col md-4 control-label" for="selectbasic">Produto</label>
     
@@ -25,7 +25,7 @@
                 $linha = mysqli_query($link,$sql);
             
                 while ($produto = mysqli_fetch_array($linha)){
-                    echo "<option value= '$produto[0]'>" .$produto[1]."<?option>";
+                    echo "<option value= '$produto[0]'>" .$produto[1]."</option>";
 
                 }
             ?>
@@ -81,15 +81,15 @@ include 'conexao.php';
 
             while($linha=mysqli_fetch_array($tabela)){
 
-                $sqlProduto = "select * from TB_Produto where id_Produto=$linha[5]";
+                $sqlProduto = "select * from TB_Produto where id_Produto=$linha[4]";
                 $tabProduto = mysqli_query($link,$sqlProduto);
                 $linhaProduto = mysqli_fetch_array($tabProduto);
 
                 echo "<tr>";
                     echo "<td>".$linhaProduto[1]."</td>"; //Produto
-                    echo "<td>".$linha[3]."</td>"; //QUANTIDADE
-                    echo "<td>".$linha[2]."</td>"; //PREÇO
-                    echo "<td>".$linha[3] * $linha[2]."</td>"; //PREÇO TOTAL
+                    echo "<td>".$linha[2]."</td>"; //QUANTIDADE
+                    echo "<td>".$linha[1]."</td>"; //PREÇO
+                    echo "<td>".$linha[2] * $linha[1]."</td>"; //PREÇO TOTAL
                 echo "</tr>";
                
                 $valTotal = $valTotal + $linha[3] * $linha[2];

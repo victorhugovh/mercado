@@ -1,8 +1,8 @@
 <?php 
     include 'conexao.php';
 
-    //cria uma venda na tebela venda
-    $sql = "inset into TB_Vendas (valor_total, data_Venda) values (0,Now())";
+    //cria uma venda na tebela TB_Vendas
+    $sql = "inset into TB_Vendas (data_Venda,valor_total) values (Now(),0)";
     mysqli_query($link,$sql);
 
     //busca a ultima linha da tabela "TB_Vendas"
@@ -15,5 +15,5 @@
     //traz o id da venda 
     $venda['id_vendas'];
 
-    header("location: indexVendas.php");
+    header("location: Vendas.php?tab=3");
 ?>

@@ -31,7 +31,7 @@ echo "</tr>";
 echo "</table>";
 
 //botao de venda
-echo "<button><a href='indexVendas.php' style='text-decoration:none'>Vender</a></button>";
+echo "<button><a href='Vendas.php' style='text-decoration:none'>Vender</a></button>";
 
 // botao para cadastrar produto
 echo "<button><a href='index.html' style='text-decoration:none'>Cadastrar</a></button>";
