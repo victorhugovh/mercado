@@ -92,7 +92,7 @@ include 'conexao.php';
                     echo "<td>".$linha[2] * $linha[1]."</td>"; //PREÇO TOTAL
                 echo "</tr>";
                
-                $valTotal = $valTotal + $linha[3] * $linha[2];
+                $valTotal = $valTotal + $linha[2] * $linha[1];
 
         echo "</table>";
 
