@@ -36,7 +36,7 @@
         <br>
             <label class="col md-4 control-label" for="selectbasic">Quantidade</label>
             <br>
-        <input type="number"  name="Quantidade">
+        <input type="number"  name="qtd">
         <input type="submit">
     </form>
 
@@ -45,12 +45,12 @@
 include 'conexao.php';
 
     $idProduto ="";
-    $Quantidade = "";            
+    $qtd = "";            
     $valTotal = 0;
 
-    if(isset($_POST['selectProdutos']) && isset($_POST['Quantidade'])){
+    if(isset($_POST['selectProdutos']) && isset($_POST['qtd'])){
         $idProduto = $_POST['selectProdutos'];
-        $Quantidade = $_POST['Quantidade'];
+        $Quantidade = $_POST['qtd'];
 
         //busca o produto e a suas informaçoes
         $sqlProduto = "select * from TB_Produto where id_Produto=$idProduto";
@@ -63,7 +63,7 @@ include 'conexao.php';
         $linhaVenda = mysqli_fetch_array($tabVenda);
 
         //insercao de produto na tabela "TB_Vendidos"
-        $inserirItem = "insert into TB_Vendidos (nome,valor,quantidade,data_time,fk_vendas,fk_produto) values ($linhaProduto[1],$linhaProduto[6],$Quantidade,Now(),$idProduto, $linhaVenda[0])";
+        $inserirItem = "insert into TB_Vendidos (valor,quantidade,fk_produto,fk_vendas) values ('$linhaProduto[2]','$qtd','$idProduto','$linhaVenda[0]')";
         $tabVendidos = mysqli_query($link,$inserirItem);
 
         //select na "TB_Vendidos" 
@@ -71,34 +71,38 @@ include 'conexao.php';
         $tabela = mysqli_query($link,$sql);
 
         echo "<table class='table table-dark'>";
-        
-        echo "<thead>";
-            echo "<td scope='col'>Produto:</td>";
-            echo "<td scope='col'>Quantidade:</td>";
-            echo "<td scope='col'>Preço:</td>";
-            echo "<td scope='col'>Total:</td>";
-        echo "</thead>";
-            
-            //Lopping para montar tabela
-            while ($linha = mysqli_fetch_array($tabela)) {
-            
-                //BUSCA O PRODUTO E SUAS INFO
-                $sqlProduto = "select * from TB_Produto where id_Produto = $linha[0]";
-                $tabProduto = mysqli_query($link, $sqlProduto);
+
+            echo "<thead>";
+                echo "<td scope='col'>Produto:</td>";
+                echo "<td scope='col'>Quantidade</td>";
+                echo "<td scope='col'>Preço:</td>";
+                echo "<td scope='col'>Total:</td>";
+            echo "</thead>";
+
+            while($linha=mysqli_fetch_array($tabela)){
+
+                $sqlProduto = "select * from TB_Produto where id_Produto=$linha[5]";
+                $tabProduto = mysqli_query($link,$sqlProduto);
                 $linhaProduto = mysqli_fetch_array($tabProduto);
+
                 echo "<tr>";
                     echo "<td>".$linhaProduto[1]."</td>"; //Produto
-                    echo "<td>".$linha[2]."</td>"; //QUANTIDADE
-                    echo "<td>".$linha[6]."</td>"; //PREÇO
-                    echo "<td>".$linha[1] * $linha[2]."</td>"; //PREÇO TOTAL
+                    echo "<td>".$linha[3]."</td>"; //QUANTIDADE
+                    echo "<td>".$linha[2]."</td>"; //PREÇO
+                    echo "<td>".$linha[3] * $linha[2]."</td>"; //PREÇO TOTAL
                 echo "</tr>";
-                
-                // $valTotal = $valTotal + $linha[1] * $linha[2];
-            }
-            $attVenda = "update TB_Vendas set valor_total='$valTotal' where id_vendas= $linhaVenda[0]";
-            $queryAtt = mysqli_query($link, $attVenda);
+               
+                $valTotal = $valTotal + $linha[3] * $linha[2];
 
+        echo "</table>";
+
+        $attVenda = "update TB_Vendas set valor_total='$valTotal' where id_venda= $linhaVenda[0]";
+        $queryAtt = mysqli_query($link, $attVenda);
+
+        }
+          
     }
+
 ?>
 
 <button><a href='mostraProdutos.php' style='text-decoration:none'>Voltar</a></button>
